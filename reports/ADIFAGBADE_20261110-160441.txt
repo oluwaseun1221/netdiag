@@ -1,0 +1,102 @@
+netdiag 1.0.0 report
+========================================================================
+Generated : 2026-11-10 16:04:41 W. Central Africa Standard Time
+Computer  : ADIFAGBADE (user tomiw)
+System    : Windows-11-10.0.26300-SP0 / Python 3.14.7
+Config    : built-in defaults
+Target    : example.com:443
+
+RESULT    : Connected, but web traffic is being intercepted  [WARN]
+Meaning   : The connection works, but web requests are redirected or blocked - often a network sign-in page or web filter.
+Action    : Open a web browser and look for a login page. Sign in with your network credentials, then retry. If none appears, send the report to IT.
+Technical : Web response: Connected, but the web request failed: certificate not trusted (unable to get local issuer certificate) - a sign-in page, proxy or web filter may be intercepting traffic
+
+CHECKS
+------------------------------------------------------------------------
+[INFO] System: ADIFAGBADE - Windows 11  (212.5 ms)
+        hostname: ADIFAGBADE
+        user: tomiw
+        os: Windows-11-10.0.26300-SP0
+        python: 3.14.7
+        proxy_settings: none
+
+[PASS] Local IP address: 10.39.0.121 on Ethernet adapter Ethernet  (0.0 ms)
+        ip: 10.39.0.121
+        adapter: Ethernet adapter Ethernet
+        apipa_addresses: []
+
+[PASS] Default gateway: 10.39.0.1  (0.0 ms)
+        gateway: 10.39.0.1
+        default_routes: 1
+
+[SKIP] Wi-Fi signal: Not connected over Wi-Fi  (20378.7 ms)
+        --- raw output ---
+        
+        [timed out after 15s: netsh wlan show interfaces]
+
+[PASS] Gateway reachable: 4/4 replies, avg 1.8 ms  (16981.5 ms)
+        loss_pct: 0.0
+        avg_ms: 1.8
+        max_ms: 3.0
+        --- raw output ---
+        
+        Pinging 10.39.0.1 with 32 bytes of data:
+        Reply from 10.39.0.1: bytes=32 time=2ms TTL=64
+        Reply from 10.39.0.1: bytes=32 time=1ms TTL=64
+        Reply from 10.39.0.1: bytes=32 time=3ms TTL=64
+        Reply from 10.39.0.1: bytes=32 time<1ms TTL=64
+        
+        Ping statistics for 10.39.0.1:
+            Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+        Approximate round trip times in milli-seconds:
+            Minimum = 0ms, Maximum = 3ms, Average = 1ms
+
+[PASS] DNS resolution: example.com -> 104.20.23.154, 172.66.147.243  (458.2 ms)
+        host: example.com
+        system_ok: True
+        system_ips: ['104.20.23.154', '172.66.147.243']
+        system_error: 
+        configured: {'10.105.40.254': True, '10.105.40.2': True, '8.8.8.8': True}
+        configured_detail: {'10.105.40.254': {'responded': True, 'ips': ['104.20.23.154', '172.66.147.243'], 'ms': 362.2, 'error': ''}, '10.105.40.2': {'responded': True, 'ips': ['104.20.23.154', '172.66.147.243'], 'ms': 362.5, 'error': ''}, '8.8.8.8': {'responded': True, 'ips': ['104.20.23.154', '172.66.147.243'], 'ms': 362.1, 'error': ''}}
+        public: {'1.1.1.1': True, '8.8.8.8': True}
+        public_detail: {'1.1.1.1': {'responded': True, 'ips': ['104.20.23.154', '172.66.147.243'], 'ms': 360.7, 'error': ''}, '8.8.8.8': {'responded': True, 'ips': ['104.20.23.154', '172.66.147.243'], 'ms': 359.9, 'error': ''}}
+        public_ok: True
+
+[PASS] Approved destination: Connected to example.com:443 in 575.7 ms  (3583.3 ms)
+        host: example.com
+        port: 443
+        host_ok: True
+        host_error: 
+        connect_ms: 575.7
+        ip_probes: {'1.1.1.1': False, '8.8.8.8': True}
+        ip_probe_ok: True
+
+[WARN] Web response: Connected, but the web request failed: certificate not trusted (unable to get local issuer certificate) - a sign-in page, proxy or web filter may be intercepting traffic  (10213.6 ms)
+        error: certificate not trusted (unable to get local issuer certificate)
+        cert: True
+
+[PASS] Speed and stability: loss 0.0%, avg 119.1 ms (min 116.0, max 131.0, jitter 4.3)  (11824.0 ms)
+        method: icmp
+        loss_pct: 0.0
+        min_ms: 116.0
+        avg_ms: 119.1
+        max_ms: 131.0
+        jitter_ms: 4.3
+        --- raw output ---
+        
+        Pinging example.com [104.20.23.154] with 32 bytes of data:
+        Reply from 104.20.23.154: bytes=32 time=116ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=116ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=119ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=116ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=118ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=117ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=122ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=117ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=119ms TTL=52
+        Reply from 104.20.23.154: bytes=32 time=131ms TTL=52
+        
+        Ping statistics for 104.20.23.154:
+            Packets: Sent = 10, Received = 10, Lost = 0 (0% loss),
+        Approximate round trip times in milli-seconds:
+            Minimum = 116ms, Maximum = 131ms, Average = 119ms

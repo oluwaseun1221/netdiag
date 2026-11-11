@@ -1,0 +1,222 @@
+{
+  "tool": "netdiag",
+  "version": "1.0.0",
+  "generated_at": "2026-11-10T16:06:15+01:00",
+  "config_source": "built-in defaults",
+  "config": {
+    "destination_host": "example.com",
+    "destination_port": 443,
+    "dns_test_hostname": "",
+    "public_resolvers": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ],
+    "ping_count": 10,
+    "gateway_ping_count": 4,
+    "loss_warn_pct": 5.0,
+    "loss_fail_pct": 50.0,
+    "latency_warn_ms": 150.0,
+    "gateway_latency_warn_ms": 30.0,
+    "tcp_timeout": 4.0,
+    "dns_timeout": 3.0,
+    "http_probe": true,
+    "trace_on_failure": true,
+    "trace_max_hops": 15,
+    "report_dir": "reports"
+  },
+  "diagnosis": {
+    "verdict": "Connected, but web traffic is being intercepted",
+    "severity": "warn",
+    "explanation": "The connection works, but web requests are redirected or blocked - often a network sign-in page or web filter.",
+    "next_action": "Open a web browser and look for a login page. Sign in with your network credentials, then retry. If none appears, send the report to IT.",
+    "technical": "Web response: Connected, but the web request failed: certificate not trusted (unable to get local issuer certificate) - a sign-in page, proxy or web filter may be intercepting traffic"
+  },
+  "checks": [
+    {
+      "id": "system",
+      "title": "System",
+      "status": "info",
+      "summary": "ADIFAGBADE - Windows 11",
+      "details": {
+        "hostname": "ADIFAGBADE",
+        "user": "tomiw",
+        "os": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.7",
+        "proxy_settings": "none"
+      },
+      "raw": "",
+      "duration_ms": 4363.3
+    },
+    {
+      "id": "local_ip",
+      "title": "Local IP address",
+      "status": "pass",
+      "summary": "10.39.0.121 on Ethernet adapter Ethernet",
+      "details": {
+        "ip": "10.39.0.121",
+        "adapter": "Ethernet adapter Ethernet",
+        "apipa_addresses": []
+      },
+      "raw": "",
+      "duration_ms": 0.0
+    },
+    {
+      "id": "gateway",
+      "title": "Default gateway",
+      "status": "pass",
+      "summary": "10.39.0.1",
+      "details": {
+        "gateway": "10.39.0.1",
+        "default_routes": 1
+      },
+      "raw": "",
+      "duration_ms": 0.0
+    },
+    {
+      "id": "wifi",
+      "title": "Wi-Fi signal",
+      "status": "skip",
+      "summary": "Not connected over Wi-Fi",
+      "details": {},
+      "raw": "\nThere is 1 interface on the system: \n\n    Name                   : Wi-Fi\n    Description            : Intel(R) Dual Band Wireless-AC 7260\n    GUID                   : 5e8f254e-e6db-451f-bd2e-ad96f6ba4356\n    Physical address       : 10:4a:7d:c4:72:00\n    Interface type         : Primary\n    State                  : disconnected\n    Radio status           : Hardware On\n                             Software On\n\n\n[timed out after 15s: netsh wlan show interfaces]",
+      "duration_ms": 15212.4
+    },
+    {
+      "id": "gateway_ping",
+      "title": "Gateway reachable",
+      "status": "pass",
+      "summary": "4/4 replies, avg 2.2 ms",
+      "details": {
+        "loss_pct": 0.0,
+        "avg_ms": 2.2,
+        "max_ms": 6.0
+      },
+      "raw": "\nPinging 10.39.0.1 with 32 bytes of data:\nReply from 10.39.0.1: bytes=32 time<1ms TTL=64\nReply from 10.39.0.1: bytes=32 time<1ms TTL=64\nReply from 10.39.0.1: bytes=32 time=6ms TTL=64\nReply from 10.39.0.1: bytes=32 time=1ms TTL=64\n\nPing statistics for 10.39.0.1:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 6ms, Average = 1ms\n",
+      "duration_ms": 4843.6
+    },
+    {
+      "id": "dns",
+      "title": "DNS resolution",
+      "status": "pass",
+      "summary": "example.com -> 104.20.23.154, 172.66.147.243",
+      "details": {
+        "host": "example.com",
+        "system_ok": true,
+        "system_ips": [
+          "104.20.23.154",
+          "172.66.147.243"
+        ],
+        "system_error": "",
+        "configured": {
+          "10.105.40.254": true,
+          "10.105.40.2": true,
+          "8.8.8.8": true
+        },
+        "configured_detail": {
+          "10.105.40.254": {
+            "responded": true,
+            "ips": [
+              "172.66.147.243",
+              "104.20.23.154"
+            ],
+            "ms": 17.6,
+            "error": ""
+          },
+          "10.105.40.2": {
+            "responded": true,
+            "ips": [
+              "172.66.147.243",
+              "104.20.23.154"
+            ],
+            "ms": 16.9,
+            "error": ""
+          },
+          "8.8.8.8": {
+            "responded": true,
+            "ips": [
+              "104.20.23.154",
+              "172.66.147.243"
+            ],
+            "ms": 16.9,
+            "error": ""
+          }
+        },
+        "public": {
+          "1.1.1.1": true,
+          "8.8.8.8": true
+        },
+        "public_detail": {
+          "1.1.1.1": {
+            "responded": true,
+            "ips": [
+              "104.20.23.154",
+              "172.66.147.243"
+            ],
+            "ms": 15.9,
+            "error": ""
+          },
+          "8.8.8.8": {
+            "responded": true,
+            "ips": [
+              "172.66.147.243",
+              "104.20.23.154"
+            ],
+            "ms": 16.9,
+            "error": ""
+          }
+        },
+        "public_ok": true
+      },
+      "raw": "",
+      "duration_ms": 508.1
+    },
+    {
+      "id": "destination",
+      "title": "Approved destination",
+      "status": "pass",
+      "summary": "Connected to example.com:443 in 483.9 ms",
+      "details": {
+        "host": "example.com",
+        "port": 443,
+        "host_ok": true,
+        "host_error": "",
+        "connect_ms": 483.9,
+        "ip_probes": {
+          "1.1.1.1": false,
+          "8.8.8.8": true
+        },
+        "ip_probe_ok": true
+      },
+      "raw": "",
+      "duration_ms": 3494.3
+    },
+    {
+      "id": "http",
+      "title": "Web response",
+      "status": "warn",
+      "summary": "Connected, but the web request failed: certificate not trusted (unable to get local issuer certificate) - a sign-in page, proxy or web filter may be intercepting traffic",
+      "details": {
+        "error": "certificate not trusted (unable to get local issuer certificate)",
+        "cert": true
+      },
+      "raw": "",
+      "duration_ms": 401.5
+    },
+    {
+      "id": "quality",
+      "title": "Speed and stability",
+      "status": "pass",
+      "summary": "loss 0.0%, avg 120.8 ms (min 116.0, max 127.0, jitter 4.0)",
+      "details": {
+        "method": "icmp",
+        "loss_pct": 0.0,
+        "min_ms": 116.0,
+        "avg_ms": 120.8,
+        "max_ms": 127.0,
+        "jitter_ms": 4.0
+      },
+      "raw": "\nPinging example.com [104.20.23.154] with 32 bytes of data:\nReply from 104.20.23.154: bytes=32 time=124ms TTL=52\nReply from 104.20.23.154: bytes=32 time=120ms TTL=52\nReply from 104.20.23.154: bytes=32 time=117ms TTL=52\nReply from 104.20.23.154: bytes=32 time=116ms TTL=52\nReply from 104.20.23.154: bytes=32 time=121ms TTL=52\nReply from 104.20.23.154: bytes=32 time=116ms TTL=52\nReply from 104.20.23.154: bytes=32 time=125ms TTL=52\nReply from 104.20.23.154: bytes=32 time=127ms TTL=52\nReply from 104.20.23.154: bytes=32 time=117ms TTL=52\nReply from 104.20.23.154: bytes=32 time=125ms TTL=52\n\nPing statistics for 104.20.23.154:\n    Packets: Sent = 10, Received = 10, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 116ms, Maximum = 127ms, Average = 120ms\n",
+      "duration_ms": 9387.6
+    }
+  ]
+}
